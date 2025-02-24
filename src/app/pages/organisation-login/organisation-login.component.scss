@@ -1,0 +1,27 @@
+.orglogin_container{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    .organisation_form{
+        display: flex;
+        flex-direction: column;
+        margin-left: 200px;
+        background-color:white;
+        .form_heading{
+            color: #3bbca0;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 120%;
+        }
+        h4{
+            color: #7a7a7a;
+        }
+  
+    }
+}
+::ng-deep .mat-form-field .mat-form-field-underline {
+    display: none; // Removes the underline
+  }
+  ::ng-deep .mat-flat-button {
+    background-color: #d9d9d9;
+  }

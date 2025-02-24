@@ -1,0 +1,42 @@
+// .container{
+//     background-color: white;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     width:100vw;
+//     height: 100vh;
+// }
+// .left-image-content{
+//     width: 100%;
+//     height: 50%;
+// }
+// .right-form-content{
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: column;
+//     position: relative;
+
+// }
+.container{
+.image_left_container{
+    display: flex;
+    justify-content: center; // Centers the image horizontally
+    align-items: center; // Centers the image vertically
+    height: 100vh; // Ensures the body takes up the full viewport height
+    margin: 0; // Removes default margins
+    overflow: hidden;
+   
+    .background_image{
+        display: block; // Removes space below the image
+        max-width: 100%; // Ensures the image doesn’t exceed the screen width
+        height: auto; // Maintains the aspect ratio
+        margin: 0 auto; // Centers the image horizontally
+        max-width: 100%;
+        
+    }
+}
+}

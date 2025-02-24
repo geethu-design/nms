@@ -1,0 +1,36 @@
+<div class="login_container">
+    <nms-entry></nms-entry>
+    <div class="form_div">
+    <form class="login_form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <h1>Login</h1>
+        <div class="email_password">
+        <mat-form-field class="email">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email"
+                   placeholder="Enter Email" [ngClass]="{'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
+                   >                
+        </mat-form-field>
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="invalid-feedback">
+            <div *ngIf="loginForm.get('email')?.hasError('required')">Email is required</div>
+            <div *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email address</div>
+          </div>
+
+        <mat-form-field class="password">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password"
+                   placeholder="Enter Password" [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+                   >            
+        </mat-form-field>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">
+            <div *ngIf="loginForm.get('password')?.hasError('required')">Password is required</div>
+            <div *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long</div>
+          </div>
+          <mat-checkbox formControlName="rememberMe">Remember Me</mat-checkbox>
+
+      </div>
+    
+          <button mat-flat-button type="submit" class="btn" (click)="onLogin()" [disabled]="loginForm.invalid">Login</button>
+      
+    </form>
+</div>
+</div>
