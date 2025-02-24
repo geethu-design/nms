@@ -70,10 +70,12 @@ export class LoginComponent implements OnInit {
     }
   }
     this.loginService.login(payload).subscribe(res=>{
+      console.log(payload);
       console.log(res);
       this.router.navigate(['/dashboard']);
       console.log("Login success");
     })
+
     // if(this.loginForm.valid){
     //   this.loginForm.value;
     //   const { email, password, rememberMe, retryCount } = this.loginForm.value;
