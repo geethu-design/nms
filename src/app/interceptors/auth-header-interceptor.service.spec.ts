@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthHeaderInterceptorService } from './auth-header-interceptor.service';
+import { authHeaderInterceptor } from './auth-header-interceptor.service';
 
 describe('AuthHeaderInterceptorService', () => {
   let service: AuthHeaderInterceptorService;

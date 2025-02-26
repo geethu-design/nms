@@ -22,7 +22,6 @@ import { LoginService } from '../login/login.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  //loginForm!:FormGroup;
   submitted = false;
   loginForm = new FormGroup({
     email: new FormControl('',[Validators.required,Validators.email]),
@@ -34,19 +33,10 @@ export class LoginComponent implements OnInit {
     private loginService:LoginService,
     private router:Router
   ){
-    // this.createForm();
   }
   ngOnInit(): void {
    
   }
-  // createForm(){
-  //   this.loginForm = this.fb.group({
-  //     email:['',[Validators.required,Validators.email] ],
-  //     password:['', Validators.required],
-  //     rememberMe: [false],
-  //     reryCount:4
-  //   })
-  // }
   getEmailControl(){
     return this.loginForm.controls['email'];
   }
@@ -61,7 +51,8 @@ export class LoginComponent implements OnInit {
   const email = this.loginForm.value.email!;
   const password = this.loginForm.value.password!;
   const rememberMe = this.loginForm.value.rememberMe;
-  const retryCount= this.loginForm.value.retryCount??4;
+  const retryCount= 2;
+ 
   const payload:ILoginRequest ={
     data:{
       username:email,
@@ -70,22 +61,8 @@ export class LoginComponent implements OnInit {
     }
   }
     this.loginService.login(payload).subscribe(res=>{
-      console.log(payload);
-      console.log(res);
-      this.router.navigate(['/dashboard']);
-      console.log("Login success");
+       this.router.navigate(['/dashboard']);
     })
 
-    // if(this.loginForm.valid){
-    //   this.loginForm.value;
-    //   const { email, password, rememberMe, retryCount } = this.loginForm.value;
-// if(rememberMe){
-  
-// }
-    //   console.log("form is valid");
-    // }
-    // else{
-    //   console.log("Form Invalid");
-    //}
    }
 }

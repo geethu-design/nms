@@ -19,7 +19,6 @@ import {Router} from '@angular/router';
 export class OrganisationLoginComponent {
   constructor(private router:Router){}
   onSubmit(){
-    console.log("submited");
     this.router.navigate(['/login']);
   }
 }

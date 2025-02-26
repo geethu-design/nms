@@ -14,6 +14,14 @@ export const routes: Routes = [
 {
     path:'dashboard',
     component:DashboardComponent
+},
+{
+    path:'',
+    component:OrganisationLoginComponent
+},
+{
+   path:'**',
+   component:OrganisationLoginComponent
 }
 
 ];

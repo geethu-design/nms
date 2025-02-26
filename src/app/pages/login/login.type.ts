@@ -5,3 +5,13 @@ export interface ILoginRequest{
        retryCount: string;
     };
 }
+export interface ILoginResponse {
+    status: number;
+    message: string;
+    data: {
+      accessToken: string;
+      refreshToken: string;
+    };
+    warnings: any[];
+  }
+  
