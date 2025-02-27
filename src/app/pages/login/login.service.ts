@@ -11,8 +11,6 @@ export class LoginService {
 
   constructor(private http:HttpClient,
    private storageService:StorageService,
-
-
   ) { }
 
   login(data: ILoginRequest){
@@ -22,6 +20,7 @@ export class LoginService {
                const refreshToken = response.data.refreshToken;
                this.storageService.saveAccessToken(accessToken);
                this.storageService.saveRefreshToken(refreshToken);
+               
            }))
           
   }
