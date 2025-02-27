@@ -1,0 +1,14 @@
+.container{
+    background-color: blue($color: #000000);
+    .user_profile{
+        float: right;
+        display: flex;
+        margin-right: 10px;
+        .username{
+       
+        }
+        .user_img{
+        
+        }
+    }
+}
