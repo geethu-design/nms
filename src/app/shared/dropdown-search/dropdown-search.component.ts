@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input,Output,EventEmitter } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';  
-
 @Component({
   selector: 'app-dropdown-search',
   imports: [NgxMatSelectSearchModule,
@@ -20,10 +19,13 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 })
 export class DropdownSearchComponent {
    // projects//
+   @Input() options:string[]=[];
+   @Input() label:string='';
+   @Input() selectedOption:string='';
+   @Output() selectedOptionChange = new EventEmitter<string>;
    searchControl = new FormControl();
    searchValue!:string;
    selectedProject!:string;
-   options:string[]=['nms','kesher','e-commerce'];
    filteredOptions:string[] = this.options;
    constructor() {
      this.searchControl.valueChanges.subscribe(value => {
@@ -32,5 +34,8 @@ export class DropdownSearchComponent {
        );
      });
    }
- 
+ onSelectionChange(Value:string){
+  this.selectedOption = Value;
+     this.selectedOptionChange.emit(this.selectedOption);
+ }
 }

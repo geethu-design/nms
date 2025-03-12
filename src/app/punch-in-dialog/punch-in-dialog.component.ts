@@ -49,21 +49,10 @@ export class PunchInDialogComponent {
     {value: 'wfh-2', viewValue: 'WFH'},
     {value:'hybrid',viewValue: 'Hybrid'}
   ];
-  //  // projects//
-  // searchControl = new FormControl();
-  // searchValue!:string;
-  // selectedProject!:string;
-  // options:string[]=['nms','kesher','e-commerce'];
-
-  // filteredOptions:string[] = this.options;
-  // constructor() {
-  //   this.searchControl.valueChanges.subscribe(value => {
-  //     this.filteredOptions = this.options.filter(option =>
-  //       option.toLowerCase().includes(value.toLowerCase())
-  //     );
-  //   });
-  // }
-  //checkbox//
- // readonly checked = model(false);
+  //project//
+  selectedProject:string='';
+  selectedTask:string='';
+  projectOptions:string[]=['nms','kesher','e-commerce'];
+  taskOptions:string[]=['Design','Development','Testing'];
 
 }

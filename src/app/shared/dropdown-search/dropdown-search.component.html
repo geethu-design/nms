@@ -1,13 +1,13 @@
 
 <div class="projects">
     <mat-form-field>
-        <mat-label>Select Project*</mat-label>
-        <mat-select [(ngModel)]="selectedProject" placeholder="Select">
+        <mat-label>{{ label }}*</mat-label>
+        <mat-select [(ngModel)]="selectedOption" (selectionChange)="onSelectionChange(selectedOption)" placeholder="Select">
           <mat-option>     
           <ngx-mat-select-search [formControl]="searchControl" placeholderLabel="Search">              
                 </ngx-mat-select-search>
               </mat-option>
-            <mat-option *ngFor="let option of filteredOptions">
+            <mat-option *ngFor="let option of filteredOptions" [value]="option">
               {{ option }}
         </mat-option>   
         </mat-select>
