@@ -1,4 +1,9 @@
 <div class="container">
+    <div>
+
+    </div>
+    <div class="heading_profile">
+        <h1>Dashboard</h1>
     <div class="user_profile">
         <div class="user_img">
             <img *ngIf="userDetails.data.profileImgUrl" [src]="userDetails.data.profileImgUrl" alt="User Profile Picture" width="100" height="100" />
@@ -9,6 +14,12 @@
             <h6>{{userDetails?.data?.employeeCode}}</h6>
         </div>
 </div>
+</div>
+<div class="punch_in">
+    <h3>You are Punched Out</h3>
+    <button class="punch_button" mat-raised-button (click)="openDialog()">Punch In</button>
+</div>
+
 </div>
 
 
