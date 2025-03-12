@@ -1,0 +1,11 @@
+.container{
+    .dialog_heading{
+        border-bottom: 1px solid rgb(235, 232, 232);
+        display: flex;
+         justify-content: space-between;
+         .close_img{
+             padding-top: 40px;
+             
+         }
+    }
+}
