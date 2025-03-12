@@ -51,8 +51,8 @@ export class PunchInDialogComponent {
   ];
   //project//
   selectedProject:string='';
-  selectedTask:string='';
   projectOptions:string[]=['nms','kesher','e-commerce'];
+  //task//
+  selectedTask:string='';
   taskOptions:string[]=['Design','Development','Testing'];
-
 }

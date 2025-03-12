@@ -34,7 +34,13 @@
  [label]="'Select Project'"
  [(selectedOption)]="selectedProject"
  ></app-dropdown-search>
-<!--description-->
+ <!--task-->
+ <app-dropdown-search
+ [options]="taskOptions"
+ [label]="'Select Task'"
+ [(selectedOption)]="selectedTask"
+ ></app-dropdown-search>
+ <!--description-->
 <div class="description">
 <mat-form-field>
   <mat-label>Description</mat-label>
