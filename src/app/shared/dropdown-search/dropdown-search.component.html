@@ -1,0 +1,15 @@
+
+<div class="projects">
+    <mat-form-field>
+        <mat-label>Select Project*</mat-label>
+        <mat-select [(ngModel)]="selectedProject" placeholder="Select">
+          <mat-option>     
+          <ngx-mat-select-search [formControl]="searchControl" placeholderLabel="Search">              
+                </ngx-mat-select-search>
+              </mat-option>
+            <mat-option *ngFor="let option of filteredOptions">
+              {{ option }}
+        </mat-option>   
+        </mat-select>
+    </mat-form-field>
+    </div>
