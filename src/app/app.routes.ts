@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import {LoginComponent} from '../app/pages/login/login.component';
 import { OrganisationLoginComponent } from './pages/organisation-login/organisation-login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { TeamsComponent } from './pages/teams/teams.component';
 export const routes: Routes = [
     {
         path:'login',
@@ -12,16 +14,30 @@ export const routes: Routes = [
     component:OrganisationLoginComponent
 },
 {
-    path:'dashboard',
-    component:DashboardComponent
+    path:'sidebar',
+    component:SidebarComponent,
+    children:[
+        {
+            path:'dashboard',
+            component:DashboardComponent
+        },
+        {
+            path:'teams',
+            component:TeamsComponent
+        },
+        
+    ]
 },
+
 {
     path:'',
-    component:OrganisationLoginComponent
+    redirectTo:'/organisation-login',
+    pathMatch:'full'
 },
 {
    path:'**',
-   component:OrganisationLoginComponent
+   redirectTo:'/organisation-login',
+   
 }
 
 ];

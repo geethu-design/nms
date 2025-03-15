@@ -20,6 +20,8 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([authHeaderInterceptor]) // Register the interceptor function here
     ),
     CookieService, // Register CookieService so it can be injected into the interceptor
+    provideRouter(routes)  // Provide the router with routes
+
     ]
 };
 
