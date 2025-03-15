@@ -9,7 +9,8 @@ import { DialogAnimationsExampleDialog } from '../punch-in/punch-in.component';
   selector: 'app-dashboard',
   imports: [CommonModule, 
             MatButtonModule,
-            DialogAnimationsExampleDialog         
+            DialogAnimationsExampleDialog ,
+                
            ],
   templateUrl: './dashboard.component.html',
   standalone:true,

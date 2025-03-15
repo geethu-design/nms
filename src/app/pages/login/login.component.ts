@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
     }
   }
     this.loginService.login(payload).subscribe(res=>{
-       this.router.navigate(['/dashboard']);
+       this.router.navigate(['/sidebar/dashboard']);
     })
 
    }
