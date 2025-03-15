@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PunchInDialogComponent } from './punch-in-dialog.component';
+import { TeamsComponent } from './teams.component';
 
-describe('PunchInDialogComponent', () => {
-  let component: PunchInDialogComponent;
-  let fixture: ComponentFixture<PunchInDialogComponent>;
+describe('TeamsComponent', () => {
+  let component: TeamsComponent;
+  let fixture: ComponentFixture<TeamsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PunchInDialogComponent]
+      imports: [TeamsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PunchInDialogComponent);
+    fixture = TestBed.createComponent(TeamsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
