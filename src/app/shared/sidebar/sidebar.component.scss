@@ -1,0 +1,20 @@
+.container{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    .mat-sidenav{
+        background-color: yellow;
+        width:250px;
+        position: fixed;
+        height: 100%;
+        z-index: 1;;
+    }
+    .mat-sidenav-content{
+        background-color: green($color: #000000);
+        margin-left: 250px;
+        padding: 16px;
+        height: 100%;
+        transition: margin-left 0.3s ease;
+    }
+}
