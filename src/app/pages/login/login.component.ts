@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
   }
     this.loginService.login(payload).subscribe(res=>{
        this.router.navigate(['/sidebar/dashboard']);
+
     })
 
    }
