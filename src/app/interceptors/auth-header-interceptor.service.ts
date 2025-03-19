@@ -3,7 +3,6 @@ import { inject } from '@angular/core';
 import { HttpRequest, HttpHandlerFn, HttpInterceptorFn } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service'; 
 import { Observable } from 'rxjs';
-import { LoginService } from './../../app/pages/login/login.service';
 
 export const authHeaderInterceptor: HttpInterceptorFn = (
   req: HttpRequest<any>, 
