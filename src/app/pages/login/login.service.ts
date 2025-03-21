@@ -5,7 +5,6 @@ import { environment } from './../../../environments/environment'
 import { map } from 'rxjs';
 import { StorageService } from '../../shared/services/storage.service';
 import { CookieService } from 'ngx-cookie-service';
-import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,8 +27,7 @@ export class LoginService {
                if(userId){
                 this.cookieservice.set('userId',userId);
                }
-           }))
-          
+           }))     
   }
 }
 //jwt decode of access token to get user id//
@@ -37,7 +35,7 @@ function jwt_decode(_accessToken: string): any {
   if (!_accessToken || _accessToken.split('.').length !== 3) {
     throw new Error('Invalid JWT token');
   }
-  const base64Url = _accessToken.split('.')[1];
+  const base64Url = _accessToken.split('.')[1];//split in to three header,payload and signature//
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   const decodedPayload = JSON.parse(atob(base64));
   return decodedPayload;
