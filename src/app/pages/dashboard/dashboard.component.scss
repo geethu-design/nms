@@ -1,22 +1,4 @@
 .container{
-    height: 100vh;
-    width: 100wh;
-    .heading_profile{
-    position:relative;
-
-         display: flex;
-         justify-content: space-between;
-         border: 1px solid rgb(235, 232, 232);
-         margin-left: 20%;
-         h1{
-            padding-left:30px;
-         }
-    .user_profile{
-        display: flex;
-        margin-right: 10px;
-    }
-
-    }
     .punch_in{
         width: 140vh;
         position:absolute;
@@ -26,4 +8,4 @@
           float: right;
         }
     }
-}
+ }

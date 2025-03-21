@@ -18,21 +18,8 @@ import { DialogAnimationsExampleDialog } from '../punch-in/punch-in.component';
 })
 export class DashboardComponent  {
   userDetails:any;
-  constructor(private service:DashboardService,
-    private cookieservice:CookieService,
+  constructor(
     private dialog:MatDialog){}
-
-  ngOnInit(): void {
-    this.getUser();
-
-  }
-  getUser(){
-    const userId= this.cookieservice.get('userId');
-    this.service.getUserDetails(userId).subscribe((res: any)=>{
-      this.userDetails = res;
-    })
-
-  }
 
   openDialog():void{
       this.dialog.open(DialogAnimationsExampleDialog,{
