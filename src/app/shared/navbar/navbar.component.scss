@@ -1,0 +1,27 @@
+.container{
+    overflow: hidden;
+    .mat-toolbar{
+        background-color: orange;
+        width: 100vw;
+        .user_profile{
+            .user_img{
+                display: flex;
+                position: relative;
+                img{
+                  position: absolute;
+                  width: 64px;
+                  height: 54px;
+                  left: 800px;
+                  top: 5px;
+                }
+                .username{
+                    position:absolute;
+                    left: 900px;
+                }
+            }
+        }
+    }
+    .mat-toolbar *{
+        white-space: nowrap;
+    }
+}
