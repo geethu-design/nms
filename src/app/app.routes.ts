@@ -4,6 +4,7 @@ import { OrganisationLoginComponent } from './pages/organisation-login/organisat
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { TeamsComponent } from './pages/teams/teams.component';
+import { AuthGuard } from './shared/services/authentication/auth-guard.service';
 export const routes: Routes = [
     {
         path:'login',
@@ -16,10 +17,11 @@ export const routes: Routes = [
 {
     path:'sidebar',
     component:SidebarComponent,
+    canActivate:[AuthGuard],
     children:[
         {
             path:'dashboard',
-            component:DashboardComponent
+            component:DashboardComponent,
         },
         {
             path:'teams',
