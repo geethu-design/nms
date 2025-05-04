@@ -2,11 +2,10 @@
     height: 100%;
     display: flex;
     flex-direction: row;
-    background-color: red;
+    background-color: paleturquoise;
     .mat-sidenav{
-        background-color: yellow;
+        background-color: palegreen;
         width:250px;
-      //  position: fixed;
         height: 100%;
         z-index: 1;;
     }
@@ -15,6 +14,5 @@
         margin-left: 250px;
         padding: 0;
         height: 100%;
-       // transition: margin-left 0.3s ease;
     }
 }

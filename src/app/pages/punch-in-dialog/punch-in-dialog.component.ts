@@ -1,17 +1,19 @@
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {ChangeDetectionStrategy} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';  
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';  
 import {MatSelectModule} from '@angular/material/select';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';  
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { DropdownSearchComponent } from '../../shared/dropdown-search/dropdown-search.component';
+import { PunchInService } from './punch-in-dialog.service';
+
 
 interface Work {
   value: string;
@@ -39,7 +41,11 @@ interface Work {
 
 })
 
-export class PunchInDialogComponent {
+export class PunchInDialogComponent implements OnInit{
+
+  form!:FormGroup;
+
+  projectNames:string[]=[];
    value="18:03";
    //work mode//
    selectedWorkMode!: string;
@@ -49,10 +55,49 @@ export class PunchInDialogComponent {
     {value: 'wfh-2', viewValue: 'WFH'},
     {value:'hybrid',viewValue: 'Hybrid'}
   ];
-  //project//
-  selectedProject:string='';
-  projectOptions:string[]=['nms','kesher','e-commerce'];
-  //task//
-  selectedTask:string='';
-  taskOptions:string[]=['Design','Development','Testing'];
+
+  constructor(
+    private fb:FormBuilder,
+    private service:PunchInService,
+  ){}
+
+  ngOnInit():void{
+     this.form = this.fb.group({
+      date:[null , Validators.required],
+      value:['18.03'],
+      workmode:['', Validators.required],
+      project:['',Validators.required],
+      task:['', Validators.required],
+      description:['', Validators.required],
+      enableTracking:[false]
+ });
+  }
+  get projectControl(): FormControl {
+    return this.form.get('project') as FormControl;
+  }
+
+  get taskControl(): FormControl{
+    return this.form.get('task') as FormControl;
+  }
+  
+  onSubmit() {
+    if (this.form.valid) {
+      console.log("form",this.form.value);
+    }
+    else{
+      console.log("form invalid");
+      Object.keys(this.form.controls).forEach(key => {
+        const control = this.form.get(key);
+        console.log(
+          `${key} - value: ${control?.value}, valid: ${control?.valid}, errors:`,
+          control?.errors
+        );
+      });
+  
+      this.form.markAllAsTouched();
+  
+    
+    }
+  }
+  
 }

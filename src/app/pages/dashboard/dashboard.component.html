@@ -2,10 +2,15 @@
     <div>
     </div>
      <div class="heading_profile">
-        <h1>Dashboard</h1>
-<div class="punch_in">
-    <h3>You are Punched Out</h3>
-    <button class="punch_button" mat-raised-button (click)="openDialog()">Punch In</button>
+  <div class="punch_in">
+    <div class="punch_out">
+        <img src="assets/images/Punch out.svg" class="punchout_icon">
+        <p> {{ punchinText$ | async }}>    
+    </div>
+        <button class="punchin_button" mat-raised-button (click)="openDialog()">
+            <img src="assets/images/Punch In.svg" class="punchin_icon">
+            {{ buttonText$ | async}}
+        </button>
 </div>
 
 </div>

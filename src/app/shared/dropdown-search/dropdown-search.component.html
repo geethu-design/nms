@@ -1,15 +1,20 @@
+<mat-form-field>
+  <mat-label>{{ label }}*</mat-label>
+  <mat-select [formControl]="selectedOptionControl" placeholder="Select">
+    <mat-option>
+      <ngx-mat-select-search [formControl]="searchControl" placeholderLabel="Search"></ngx-mat-select-search>
+    </mat-option>
 
-<div>
-    <mat-form-field>
-        <mat-label>{{ label }}*</mat-label>
-        <mat-select [(ngModel)]="selectedOption" (selectionChange)="onSelectionChange(selectedOption)" placeholder="Select">
-          <mat-option>     
-          <ngx-mat-select-search [formControl]="searchControl" placeholderLabel="Search">              
-                </ngx-mat-select-search>
-              </mat-option>
-            <mat-option *ngFor="let option of filteredOptions" [value]="option">
-              {{ option }}
-        </mat-option>   
-        </mat-select>
-    </mat-form-field>
-</div>
+    <ng-container *ngIf="label === 'Select Project'">
+      <mat-option *ngFor="let projectName of projectNames" [value]="projectName">
+        {{ projectName }}
+      </mat-option>
+    </ng-container>
+
+    <ng-container *ngIf="label === 'Select Task'">
+      <mat-option *ngFor="let taskName of taskNames" [value]="taskName">
+        {{ taskName }}
+      </mat-option>
+    </ng-container>
+  </mat-select>
+</mat-form-field>

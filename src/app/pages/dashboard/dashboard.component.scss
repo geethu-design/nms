@@ -1,11 +1,31 @@
 .container{
-    .punch_in{
-        width: 140vh;
-        position:absolute;
-        top: 105px;
-        left: 20%;
-        .punch_button{
-          float: right;
+    .punch_in{   
+      display: flex;
+      position: relative;
+      background-color: azure;
+      width: 140vh;
+      top: 10px;
+      left: 5px;
+      .punch_out{
+        display: flex;
+        align-items: center;
+        .punchout_icon{
+          width: 25px;
+          height: 25px;
         }
+      }
+        .punchin_button{
+          position: absolute;
+          left: 80%;
+          top: 5px;
+          color: white;
+          background-color: #3bbca0;
+          text-align: center;
+          .punchin_icon{
+              width: 25px;
+              height: 25px;
+          }
     }
+  }
+
  }
