@@ -13,7 +13,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { DropdownSearchComponent } from '../../shared/dropdown-search/dropdown-search.component';
 import { PunchInService } from './punch-in-dialog.service';
-
+import { CookieService } from 'ngx-cookie-service';
+import { punchInPayload } from './punch-in-dialog.type';
 
 interface Work {
   value: string;
@@ -59,6 +60,7 @@ export class PunchInDialogComponent implements OnInit{
   constructor(
     private fb:FormBuilder,
     private service:PunchInService,
+    private cookieService:CookieService,
   ){}
 
   ngOnInit():void{
@@ -79,10 +81,27 @@ export class PunchInDialogComponent implements OnInit{
   get taskControl(): FormControl{
     return this.form.get('task') as FormControl;
   }
-  
+   
+
   onSubmit() {
-    if (this.form.valid) {
+   const punchPayload:punchInPayload={
+      data:{
+        empId: this.cookieService.get('userId'),
+        description: this.form.value.description,
+        ignoreTask: false,
+        isOnBreak: false,
+        projectId: this.projectControl.value?.id?this.projectControl.value.id:null,
+        punchInDateTime: this.form.value.punchInDateTime,
+        punchLocation: this.form.value.punchLocation,
+        shiftDate: this.form.value.shiftDate, 
+        taskId:this.taskControl.value?.id?this.taskControl.value.id:null   
+      }
+    }
+    if (this.form.valid) {      
       console.log("form",this.form.value);
+      this.service.postPunchIn(punchPayload).subscribe(res=>{
+        console.log("punchin res:",res);
+      })
     }
     else{
       console.log("form invalid");
@@ -93,11 +112,10 @@ export class PunchInDialogComponent implements OnInit{
           control?.errors
         );
       });
-  
-      this.form.markAllAsTouched();
-  
-    
+      this.form.markAllAsTouched();  
     }
+
+    
   }
   
 }

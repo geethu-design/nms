@@ -48,17 +48,14 @@ export interface punchInPayload{
   data: 
 {
   empId: string;
+  description: string;
+  ignoreTask: boolean;
+  isOnBreak: boolean;
+  projectId: string;
   punchInDateTime: number;
   punchLocation: string;
+  shiftDate: string; 
+  taskId:string;
 }
-description: string;
-empId: string;
-ignoreTask: boolean;
-isOnBreak: boolean;
-projectId: string;
-punchInDateTime: number;
-punchLocation: string;
-shiftDate: string; 
-taskId:string;
 }
 
