@@ -1,29 +1,31 @@
 .container{
-    height: 100vh;
-    width: 100wh;
-    .heading_profile{
-    position:relative;
-
-         display: flex;
-         justify-content: space-between;
-         border: 1px solid rgb(235, 232, 232);
-         margin-left: 20%;
-         h1{
-            padding-left:30px;
-         }
-    .user_profile{
+    .punch_in{   
+      display: flex;
+      position: relative;
+      background-color: azure;
+      width: 140vh;
+      top: 10px;
+      left: 5px;
+      .punch_out{
         display: flex;
-        margin-right: 10px;
-    }
-
-    }
-    .punch_in{
-        width: 140vh;
-        position:absolute;
-        top: 105px;
-        left: 20%;
-        .punch_button{
-          float: right;
+        align-items: center;
+        .punchout_icon{
+          width: 25px;
+          height: 25px;
         }
+      }
+        .punchin_button{
+          position: absolute;
+          left: 80%;
+          top: 5px;
+          color: white;
+          background-color: #3bbca0;
+          text-align: center;
+          .punchin_icon{
+              width: 25px;
+              height: 25px;
+          }
     }
-}
+  }
+
+ }

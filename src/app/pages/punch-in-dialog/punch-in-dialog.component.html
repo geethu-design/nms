@@ -1,0 +1,68 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="container">
+    <div class="date_time">
+<mat-form-field class="example-full-width">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="example-form-field">
+    <input matInput type="text" formControlName="value">
+    <!-- @if (value) {
+      <span matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      </span>
+    } -->
+    <button *ngIf="form.get('value')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.get('value')?.setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+
+  </mat-form-field> 
+</div>
+<!--work mode-->
+<div class="work_mode">
+    <mat-form-field>
+      <mat-label>Work mode*</mat-label>
+      <!-- <mat-select [(ngModel)]="selectedWorkMode" name="food" placeholder="Select">
+        @for (workmode of workmodes; track workmode) {
+          <mat-option [value]="workmode.value">{{workmode.viewValue}}</mat-option>
+        }
+      </mat-select> -->
+      <mat-select formControlName="workmode" placeholder="Select">
+        <mat-option *ngFor="let workmode of workmodes" [value]="workmode.value">
+          {{workmode.viewValue}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+</div>
+<!--project-->
+<!-- <app-dropdown-search
+ [label]="'Select Project'"
+ formControlName="project"
+ ></app-dropdown-search>
+ task-->
+ <!-- <app-dropdown-search
+ [label]="'Select Task'"
+ formControlName="task"
+ ></app-dropdown-search> --> 
+ <!--description-->
+ <app-dropdown-search formControlName="project" [label]="'Select Project'"></app-dropdown-search>
+<app-dropdown-search formControlName="task" [label]="'Select Task'"></app-dropdown-search>
+
+<div class="description">
+<mat-form-field>
+  <mat-label>Description</mat-label>
+  <textarea matInput formControlName="description"></textarea>
+</mat-form-field>
+</div>
+<!--checkbox-->
+<div class="checkbox">
+    <mat-checkbox formControlName="enableTracking" class="example-margin">Enable Project and Task Tracking</mat-checkbox>
+</div>
+
+</div>
+</form>

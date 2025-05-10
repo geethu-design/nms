@@ -5,34 +5,34 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog'; 
 import { MatButtonModule} from '@angular/material/button';
 import { DialogAnimationsExampleDialog } from '../punch-in/punch-in.component';
+import { selectPunchinText,selectButtonState} from '../../shared/state/text.selector';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
 @Component({
   selector: 'app-dashboard',
   imports: [CommonModule, 
             MatButtonModule,
-            DialogAnimationsExampleDialog         
+            DialogAnimationsExampleDialog 
            ],
   templateUrl: './dashboard.component.html',
   standalone:true,
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent  {
+export class DashboardComponent implements OnInit  {
   userDetails:any;
-  constructor(private service:DashboardService,
-    private cookieservice:CookieService,
-    private dialog:MatDialog){}
+  punchinText$!:Observable<string>;
+  buttonText$!:Observable<string>;
+  constructor(
+    private dialog:MatDialog,
+    private store:Store
+){
+}
+ngOnInit(): void {
+  this.punchinText$ = this.store.pipe(select(selectPunchinText));
+  this.buttonText$ = this.store.pipe(select(selectButtonState));
+  console.log("buttontext",this.buttonText$);
 
-  ngOnInit(): void {
-    this.getUser();
-
-  }
-  getUser(){
-    const userId= this.cookieservice.get('userId');
-    this.service.getUserDetails(userId).subscribe((res: any)=>{
-      this.userDetails = res;
-    })
-
-  }
-
+}
   openDialog():void{
       this.dialog.open(DialogAnimationsExampleDialog,{
         'width':'400px',

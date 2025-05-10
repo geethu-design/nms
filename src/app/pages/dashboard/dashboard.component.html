@@ -1,23 +1,16 @@
 <div class="container">
     <div>
-
     </div>
-    <div class="heading_profile">
-        <h1>Dashboard</h1>
-    <div class="user_profile">
-        <div class="user_img">
-            <img *ngIf="userDetails.data.profileImgUrl" [src]="userDetails.data.profileImgUrl" alt="User Profile Picture" width="100" height="100" />
-        </div>
-    
-        <div class="username">
-            <h4>{{userDetails?.data?.personalDetails?.firstname}}</h4>
-            <h6>{{userDetails?.data?.employeeCode}}</h6>
-        </div>
-</div>
-</div>
-<div class="punch_in">
-    <h3>You are Punched Out</h3>
-    <button class="punch_button" mat-raised-button (click)="openDialog()">Punch In</button>
+     <div class="heading_profile">
+  <div class="punch_in">
+    <div class="punch_out">
+        <img src="assets/images/Punch out.svg" class="punchout_icon">
+        <p> {{ punchinText$ | async }}>    
+    </div>
+        <button class="punchin_button" mat-raised-button (click)="openDialog()">
+            <img src="assets/images/Punch In.svg" class="punchin_icon">
+            {{ buttonText$ | async}}
+        </button>
 </div>
 
 </div>
