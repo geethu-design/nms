@@ -5,13 +5,15 @@ import { Teamlisting } from '../teams/teams.types';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-teams',
   imports: [
     MatTableModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule,
   ],
   templateUrl: './teams.component.html',
   standalone:true,
@@ -19,6 +21,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 })
 export class TeamsComponent implements OnInit{
 
+  length = 100;
+  pageSize=10;
+  pageSizeOptions:number[]=[5,10,25,100];
   searchControl = new FormControl('');
   displayedColumns: string[] = ['employeeName','workEmail', 'employeeCode', 'workMobileNumber', 'department'];
 
@@ -40,18 +45,17 @@ export class TeamsComponent implements OnInit{
     'department',
   ]    
   }
-
      constructor(
       private teamsService:TeamsService
      ){}
   ngOnInit(): void {
-    
     this.getTeamListing();
     this.getFilteredData();
   }
   getTeamListing(searchTerm:string=''){
     this.teamsService.getTeamList(this.payload,searchTerm).subscribe((res:Teamlisting.teamResponse)=>{
       this.teamList= res.data;
+      this.length = res.pagination.totalElements;
       });
   }
  getFilteredData(){
@@ -80,5 +84,13 @@ export class TeamsComponent implements OnInit{
       this.payload.pagination.page = 0;
     }
     this.getTeamListing('');
+ }
+
+ onPageChange(event:PageEvent){
+    console.log("pageEvent", event);
+    this.pageSize = event.pageSize;
+    this.payload.pagination.size = event.pageSize;
+    this.payload.pagination.page = event.pageIndex;
+    this.getTeamListing(this.searchControl.value || '');
  }
 }
