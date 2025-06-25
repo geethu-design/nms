@@ -13,7 +13,13 @@ export const authHeaderInterceptor: HttpInterceptorFn = (
   const organizationId = 'nintriva'; 
   const accessToken= cookieService.get('access_token');
   // Set the organization ID in the cookie
-  cookieService.set('organizationId', organizationId, { path: '/' });
+  cookieService.set('organizationId', organizationId, { 
+    path: '/',
+    expires:1,
+    sameSite:'Lax',
+    // secure:true
+    secure: window.location.protocol === 'https:' 
+   });
 if(req.url.includes('login')){
   const clonedRequest = req.clone({
     setHeaders: {

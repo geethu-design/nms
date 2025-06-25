@@ -34,7 +34,6 @@ export class DialogAnimationsExampleDialog implements OnInit {
   onSubmit(){
    this.store.dispatch(updatePunchinText({text:'You are Punched in'}));
    this.store.dispatch(updateButtonText({text:'Punch out'}));
-    console.log("submit");
     this.PunchInDialogComponent.onSubmit();
   }
    getProjects(){

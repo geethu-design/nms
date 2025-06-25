@@ -5,6 +5,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { TeamsComponent } from './pages/teams/teams.component';
 import { AuthGuard } from './shared/services/authentication/auth-guard.service';
+import { AddEmployeeComponent } from './pages/add-employee/add-employee.component';
+import { StepOneComponent } from './pages/step-one/step-one.component';
+import { StepTwoComponent } from './pages/step-two/step-two.component';
+import { StepThreeComponent } from './pages/step-three/step-three.component';
+import { FileUploadComponent } from './pages/file-upload/file-upload.component';
 export const routes: Routes = [
     {
         path:'login',
@@ -26,11 +31,29 @@ export const routes: Routes = [
         {
             path:'teams',
             component:TeamsComponent
-        },
-        
+        },        
     ]
 },
-
+{
+    path:'add-employee',
+    component:AddEmployeeComponent
+},
+{
+    path:'step-one',
+    component:StepOneComponent
+},
+{
+    path:'step-two',
+    component:StepTwoComponent
+},
+{
+    path:'step-three',
+    component:StepThreeComponent
+},
+{
+    path:'file-upload',
+    component:FileUploadComponent
+},
 {
     path:'',
     redirectTo:'/organisation-login',

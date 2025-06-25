@@ -1,0 +1,18 @@
+.container{
+    .img_profile{
+        display: flex;
+        .img,.profile,.upload_btn
+            {
+             flex:1;
+            }
+    }
+    .columns{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .first_column,.second_column,.third_column{
+       flex:1;
+       min-width: 0;
+    }
+}

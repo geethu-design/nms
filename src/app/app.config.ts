@@ -9,6 +9,7 @@ import { authHeaderInterceptor } from '../app/interceptors/auth-header-intercept
 import { CookieService } from 'ngx-cookie-service';
 import { provideStore } from '@ngrx/store';
 import { textReducer } from './shared/state/text.reducer';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -20,7 +21,9 @@ export const appConfig: ApplicationConfig = {
     ),
     CookieService, // Register CookieService so it can be injected into the interceptor
     provideRouter(routes), // Provide the router with routes
-    provideStore({text: textReducer}), // here provide the store for the root component
+    provideStore({text: textReducer}), 
+    provideNativeDateAdapter()
+    // here provide the store for the root component
   ]
 };
 

@@ -30,12 +30,14 @@ export class DashboardComponent implements OnInit  {
 ngOnInit(): void {
   this.punchinText$ = this.store.pipe(select(selectPunchinText));
   this.buttonText$ = this.store.pipe(select(selectButtonState));
-  console.log("buttontext",this.buttonText$);
 
 }
   openDialog():void{
       this.dialog.open(DialogAnimationsExampleDialog,{
-        'width':'400px',
+        'width':'2000px',
+        maxWidth:'none',
+        autoFocus: true,
+        restoreFocus: true,      
         data:{message:'hello from pent'}
       });
   }

@@ -1,0 +1,67 @@
+<!-- <mat-dialog-content>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Corporate Details</ng-template>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+            <button matButton>clear</button>
+          <button matButton matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Personal Details">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button matButton matStepperPrevious>Back</button>
+          <button matButton matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Review Changes</ng-template>
+      <p>you are now done</p>
+      <div>
+        <button matButton matStepperPrevious>Back</button>
+        <button matButton (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-dialog-content> -->
+<mat-dialog-content>
+    <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="step1Form">
+      <form [formGroup]="step1Form">
+      <app-step-one [formGroup]="step1Form"></app-step-one>
+      <button mat-button matStepperNext>Next</button>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="step2Form">
+      <form [formGroup]="step2Form">
+        <app-step-two [formGroup]="step2Form"></app-step-two>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+        </form>
+    </mat-step>
+    <!-- <mat-step [stepControl]="step3Form"> -->
+      <mat-step>
+      <!-- <app-step-three [formGroup]="step3Form"></app-step-three> -->
+      <!-- <app-step-three [step1Data]="step1FormGroup.value" [step2Data]="step2FormGroup.value" ></app-step-three> -->
+      <app-step-three
+      [step1Data]="step1Form.value"
+      [step2Data]="step2Form.value">
+    </app-step-three>  
+         <button mat-button matStepperPrevious>Back</button>
+         <button mat-button (click)="onSubmit()">Submit</button>
+    </mat-step>
+    
+</mat-horizontal-stepper>
+</mat-dialog-content>

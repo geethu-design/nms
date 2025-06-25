@@ -98,7 +98,6 @@ export class PunchInDialogComponent implements OnInit{
       }
     }
     if (this.form.valid) {      
-      console.log("form",this.form.value);
       this.service.postPunchIn(punchPayload).subscribe(res=>{
         console.log("punchin res:",res);
       })

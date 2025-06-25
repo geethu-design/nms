@@ -1,0 +1,195 @@
+<div class="container">
+<div class="img_profile">
+    <div class="img">
+        <img src="src/assets/images/profile.svg">
+    </div>
+    <div class="profile">
+        <p>Profile Photo</p>
+    </div>
+    <div class="upload_btn">
+        <button matButton (click)="fileUpload()">Upload</button>
+    </div>
+</div>
+<div class="columns" [formGroup]="formGroup" >
+<div class="first_column" >
+    <div>
+        <mat-label> First Name * </mat-label>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label> First Name </mat-label>
+            <input matInput formControlName="firstName">
+          </mat-form-field> 
+    </div>
+      <div> 
+        <div>
+            <mat-label>Gender</mat-label>
+        </div>
+        <div>
+        <mat-form-field>
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+              @for (gender of genders; track gender) {
+                <mat-option [value]="gender.value">{{gender.viewValue}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>   
+        </div>     
+    </div>
+    <div> 
+        <div>
+            <mat-label> Address </mat-label>
+        </div>
+        <div>
+        <mat-form-field>
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="address"></textarea>
+          </mat-form-field>  
+        </div>     
+    </div>
+    <div>
+        <mat-label>IFSC</mat-label>
+    </div> 
+    <div>  
+        <mat-form-field>
+            <mat-label>IFSC</mat-label>
+            <input matInput formControlName="ifsc">
+        </mat-form-field>  
+    </div> 
+    <div>
+        <mat-label>ESI Number</mat-label>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>ESI Number</mat-label>
+            <input matInput formControlName="esi_no">
+        </mat-form-field>
+    </div>
+</div> 
+<div class="second_column">
+<div>
+    <mat-label>Last Name *</mat-label>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName">
+    </mat-form-field>
+</div>
+<div>
+    <mat-label>Personal Mobile Number * </mat-label>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Personal Mobile Number</mat-label>
+        <input matInput formControlName="personalMobileNumber">
+    </mat-form-field>
+</div>
+<div>
+    <div>
+        <mat-label>Blood Group</mat-label>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Blood Group</mat-label>
+            <mat-select formControlName="bloodGroup">
+            @for(bloodGroup of bloodGroups; track bloodGroup){
+                <mat-option [value]="bloodGroup.value">{{ bloodGroup.viewValue}}</mat-option>
+            }
+        </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-label>Bank Account Number</mat-label>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Bank Account Number</mat-label>
+            <input matInput formControlName="bankAccountNumber">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-label>PAN Number</mat-label>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>PAN Number</mat-label>
+            <input matInput formControlName="panNumber">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-label>Provident Fund Number</mat-label>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Provident Fund Number</mat-label>
+            <input matInput formControlName="providentFundNumber">
+        </mat-form-field>
+    </div>
+
+    </div>
+</div> 
+<div class="third_column">
+  <div>
+    <mat-label> Date Of Birth</mat-label>
+  </div>
+  <div>
+    <mat-form-field>
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  </div>
+  <div>
+    <mat-label>Personal Email *</mat-label>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Personal Email</mat-label>
+        <input matInput formControlName="personalEmail">
+    </mat-form-field>
+</div>
+
+<div>
+    <mat-label>Emergency Contact *</mat-label>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Emergency Contact</mat-label>
+        <input matInput formControlName="emergencyContact">
+    </mat-form-field>
+</div>
+<div>
+    <mat-label>Bank Name</mat-label>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Bank Name</mat-label>
+        <input matInput formControlName="bankName">
+    </mat-form-field>
+</div>
+<div>
+    <mat-label>Adhaar Number</mat-label>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Adhaar Number</mat-label>
+        <input matInput formControlName="adhaarNumber">
+    </mat-form-field>
+</div>
+<div>
+    <mat-label>Medical Insurance Number</mat-label>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Medical Insurance Number</mat-label>
+        <input matInput formControlName="medicalInsuranceNumber">
+    </mat-form-field>
+</div>
+
+</div>
+</div>
+</div>
+

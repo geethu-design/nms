@@ -20,14 +20,40 @@ export class LoginService {
            .pipe(map(response=>{
                const accessToken = response.data.accessToken;
                const refreshToken = response.data.refreshToken;
-               this.storageService.saveAccessToken(accessToken);
-               this.storageService.saveRefreshToken(refreshToken);
+               this.cookieservice.set('access_token',accessToken,{
+                expires:1,
+                path:'/',
+                sameSite:'Lax',
+                // secure:true,
+                secure: window.location.protocol === 'https:'
+
+               });
+               this.cookieservice.set('refresh_token',refreshToken,{
+                expires:7,
+                path:'/',
+                sameSite:'Lax',
+                // secure:true
+                secure: window.location.protocol === 'https:'
+
+               });
+              //  this.storageService.saveAccessToken(accessToken);
+              //  this.storageService.saveRefreshToken(refreshToken);
               const decodedToken:any = jwt_decode(accessToken);
               const userId:string = decodedToken.userId;
                if(userId){
-                this.cookieservice.set('userId',userId);
+                this.cookieservice.set('userId',userId,
+                  {
+                    expires:1,
+                    path:'/',
+                    sameSite:'Lax',
+                    // secure:true
+                    secure: window.location.protocol === 'https:'
+                  });
                }
-           }))     
+               this.storageService.saveAccessToken(accessToken);
+               this.storageService.saveRefreshToken(refreshToken);
+
+           })) ;    
   }
 }
 //jwt decode of access token to get user id//

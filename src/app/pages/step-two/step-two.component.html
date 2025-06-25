@@ -1,0 +1,243 @@
+<div class="columns" [formGroup]="formGroup" >
+
+<!-- <div class="container">
+    <div class="column_one">
+        <div>
+            <mat-label>Work Mobile Number *</mat-label>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label> Work Mobile Number </mat-label>
+                <input matInput formControlName="workMobileNumber">
+              </mat-form-field> 
+        </div>
+        <div>
+            <mat-label>Joining date</mat-label>
+        </div>
+      <div>
+        <mat-form-field>
+            <mat-label>Joining date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="joiningDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+    
+        <div>
+           <mat-label>Department *</mat-label>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Department</mat-label>
+                <mat-select formControlName="department">
+                  @for (department of departments; track department.value) {
+                    <mat-option [value]="department.value">{{department.viewValue}}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+              
+        </div>
+     
+<div>
+    <div>
+        <mat-label>Employee Code</mat-label>
+    </div>
+    <mat-form-field>
+        <mat-label>Employee Code</mat-label>
+        <input matInput formControlName="employeeCode"> 
+    </mat-form-field>
+
+</div>
+
+ <div>
+    <div>
+        <mat-label>Buddy</mat-label>
+     </div>    
+     <mat-form-field>
+         <mat-label>Buddy</mat-label>
+         <mat-select>
+           @for (buddy of buddies; track buddy.value) {
+             <mat-option [value]="buddy.value">{{ buddy.viewValue }}</mat-option>
+           }
+         </mat-select>
+       </mat-form-field>    
+ </div>
+      
+ 
+<div>
+    <div>
+        <mat-label>Daily Working Hours</mat-label>
+    </div>
+        <mat-form-field>
+        <mat-label>Daily Working Hours</mat-label>
+        <input matInput formControlName="dailyWorkingHours"> 
+    </mat-form-field>
+
+</div>
+</div>
+
+
+<div class="column_two">
+    <div>
+        <div>
+            <mat-label>Work Email *</mat-label>
+        </div>    
+        <mat-form-field appearance="fill">
+            <mat-label> Work Email </mat-label>
+            <input matInput formControlName="workEmail">
+          </mat-form-field> 
+    </div>
+
+
+     <div>
+        <div>
+            <mat-label>Employment Type</mat-label>
+         </div>    
+         <mat-form-field>
+             <mat-label>Employment Type</mat-label>
+             <mat-select formControlName="employmentType">
+               @for (employmentType of employmentTypes; track employmentType.value) {
+                 <mat-option [value]="employmentType.value">{{ employmentType.viewValue }}</mat-option>
+               }
+             </mat-select>
+           </mat-form-field>    
+     </div>
+
+
+     <div>
+        <div>
+            <mat-label>Office Location</mat-label>
+         </div>    
+         <mat-form-field>
+             <mat-label>Office Location</mat-label>
+             <mat-select formControlName="officeLocation">
+               @for (officeLocation of officeLocations; track officeLocation.value) {
+                 <mat-option [value]="officeLocation.value">{{ officeLocation.viewValue }}</mat-option>
+               }
+             </mat-select>
+           </mat-form-field>    
+     </div> -->
+
+    <!--probation period-->
+     <!-- <div>
+        <div>
+            <mat-label>Probation period in months </mat-label>
+         </div>    
+         <mat-form-field>
+             <mat-label>Probation period in months</mat-label>
+             <mat-select formControlName="probationPeriodInMonths">
+               @for (probationPeriodInMonth of probationPeriodInMonths; track probationPeriodInMonth.value) {
+                 <mat-option [value]="probationPeriodInMonth.value">{{ probationPeriodInMonth.viewValue }}</mat-option>
+               }
+             </mat-select>
+           </mat-form-field>    
+     </div> -->
+
+<!--managers-->
+ <!-- <div>
+    <div>
+        <mat-label>Managers</mat-label>
+     </div>    
+     <mat-form-field>
+         <mat-label>Managers</mat-label>
+         <mat-select formControlName="employmentType">
+           @for (officeLocation of officeLocations; track officeLocation.value) {
+             <mat-option [value]="officeLocation.value">{{ officeLocation.viewValue }}</mat-option>
+           }
+         </mat-select>
+       </mat-form-field>    
+ </div> -->
+<!--shift-->
+ <div>
+    <div>
+        <mat-label>Shift *</mat-label>
+    </div>
+
+     <mat-form-field>
+        <mat-label>Shift</mat-label>
+         <mat-select formControlName="shift">
+           <!-- @for (shift of shifts; track shift.value) {
+             <mat-option [value]="shift.value">{{ shift.viewValue }}</mat-option>
+           } -->
+             <mat-option *ngFor="let shift of shifts" [value]="shift.value">
+                {{ shift.viewValue}}
+             </mat-option>
+         </mat-select>
+       </mat-form-field>    
+ </div>
+</div>
+
+ <div class="third_column"> 
+<!--date of first joining-->
+<!-- <div>
+    <mat-label>Date of Joining </mat-label>
+ </div>
+
+<mat-form-field>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfJoining">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> -->
+<!--Designation-->
+<div>
+    <mat-label>Designation *</mat-label>
+ </div>
+
+ <div>
+         <mat-form-field>
+         <mat-label>Designation</mat-label>
+         <mat-select formControlName="designation">
+             <mat-option *ngFor="let designation of designations" [value]="designation.value">
+                      {{ designation.viewValue}}
+             </mat-option>
+         </mat-select>
+       </mat-form-field>    
+ </div>
+<!--Employment status-->
+<div>
+    <mat-label>Employment Status</mat-label>
+ </div>
+
+ <div>
+         <mat-form-field>
+         <mat-label>Employment Status</mat-label>
+         <mat-select formControlName="employmentStatus">
+             <mat-option *ngFor="let employmentStatus of  employmentStatuses" [value]="employmentStatus.value">
+                        {{ employmentStatus.viewValue }}
+             </mat-option>
+         </mat-select>
+       </mat-form-field>    
+ </div>
+<!--ctc-->
+<div>
+    <mat-label>CTC</mat-label>
+</div>   
+ <div>
+    <mat-form-field appearance="fill">
+        <mat-label>CTC</mat-label>
+        <input matInput formControlName="ctc" required>
+    </mat-form-field> 
+</div> 
+<div>
+    <!--work mode-->
+    <div>
+        <mat-label>Work Mode *</mat-label>
+    </div>
+     <mat-form-field>
+        <mat-label>Work Mode</mat-label>
+        <mat-select formControlName="workMode">
+            <mat-option *ngFor="let workMode of workModes" [value]="workMode.value">
+              {{ workMode.viewValue }}
+            </mat-option>
+          </mat-select>
+                 </mat-form-field>    
+ </div>
+</div>
+<!--work mode-->
+
+
+<!-- </div> -->
+
+<!-- </div>  -->

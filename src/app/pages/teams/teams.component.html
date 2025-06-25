@@ -2,6 +2,7 @@
     <div class="search_container">
     <input type="text" placeholder="Search..." [formControl]="searchControl">
     <img src="src/assets/images/search-normal.svg">
+  <button (click)="addEmployee()">Add Employee +</button>
 </div>
 
 <table mat-table [dataSource]="teamList" class="mat-elevation-z8">

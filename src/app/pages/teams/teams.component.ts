@@ -6,7 +6,9 @@ import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 @Component({
   selector: 'app-teams',
   imports: [
@@ -20,7 +22,6 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
   styleUrl: './teams.component.scss'
 })
 export class TeamsComponent implements OnInit{
-
   length = 100;
   pageSize=10;
   pageSizeOptions:number[]=[5,10,25,100];
@@ -46,7 +47,9 @@ export class TeamsComponent implements OnInit{
   ]    
   }
      constructor(
-      private teamsService:TeamsService
+      private teamsService:TeamsService,
+      private router:Router,
+      private dialog:MatDialog,
      ){}
   ngOnInit(): void {
     this.getTeamListing();
@@ -92,5 +95,19 @@ export class TeamsComponent implements OnInit{
     this.payload.pagination.size = event.pageSize;
     this.payload.pagination.page = event.pageIndex;
     this.getTeamListing(this.searchControl.value || '');
+ }
+ addEmployee(){
+  this.openDialog();
+ }
+ openDialog(){
+  this.dialog.open(AddEmployeeComponent,
+    {  panelClass: 'force-wide-dialog',
+      maxWidth: 'none',
+      autoFocus: true,
+      restoreFocus: true,
+    
+    }
+
+  )
  }
 }
