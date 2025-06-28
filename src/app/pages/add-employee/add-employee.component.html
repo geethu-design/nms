@@ -1,41 +1,5 @@
-<!-- <mat-dialog-content>
-  <mat-horizontal-stepper linear #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Corporate Details</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-            <button matButton>clear</button>
-          <button matButton matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Personal Details">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
-        <div>
-          <button matButton matStepperPrevious>Back</button>
-          <button matButton matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Review Changes</ng-template>
-      <p>you are now done</p>
-      <div>
-        <button matButton matStepperPrevious>Back</button>
-        <button matButton (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-</mat-dialog-content> -->
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit Employee' : 'Add Employee' }}</h2>
+
 <mat-dialog-content>
     <mat-horizontal-stepper linear #stepper>
     <mat-step [stepControl]="step1Form">
@@ -60,7 +24,9 @@
       [step2Data]="step2Form.value">
     </app-step-three>  
          <button mat-button matStepperPrevious>Back</button>
-         <button mat-button (click)="onSubmit()">Submit</button>
+         <button mat-button (click)="onSubmit()">
+          {{ isEditMode ? 'Update' : 'Create' }}
+         </button>
     </mat-step>
     
 </mat-horizontal-stepper>
