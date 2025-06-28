@@ -1,0 +1,19 @@
+.container{
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color:beige;
+        .nav-links{
+            display: flex;
+            list-style: none;
+            gap: 4.5rem;
+            li{
+                a{
+                    text-decoration: none;
+                }
+            }
+        }
+    
+    }
+}
