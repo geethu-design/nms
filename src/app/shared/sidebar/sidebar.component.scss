@@ -7,7 +7,20 @@
        // background-color: palegreen;
         width:250px;
         height: 100%;
-        z-index: 1;;
+        z-index: 1;
+        .role{
+            display: flex;
+            align-items: center;
+            padding-top: 20px;
+            .employee{
+                border:1px solid grey;
+
+            }
+            .admin{
+                border:1px solid grey;
+
+            }
+        }
     }
     .mat-sidenav-content{
         background-color: green($color: #000000);
