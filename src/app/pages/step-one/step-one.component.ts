@@ -59,12 +59,12 @@ bloodGroups:BloodGroup[]=[
 
  ngOnInit():void{
 
-  this.formGroup.addControl('firstName', new FormControl('', Validators.required));
+  this.formGroup.addControl('firstname', new FormControl('', Validators.required));
   this.formGroup.addControl('gender', new FormControl(''));
   this.formGroup.addControl('address', new FormControl(''));
   this.formGroup.addControl('ifsc', new FormControl(''));
   this.formGroup.addControl('esi_no', new FormControl(''));
-  this.formGroup.addControl('lastName', new FormControl('',Validators.required));
+  this.formGroup.addControl('lastname', new FormControl('',Validators.required));
   this.formGroup.addControl('personalMobileNumber',new FormControl('',Validators.required));
   this.formGroup.addControl('bloodGroup', new FormControl(''));
   this.formGroup.addControl('bankAccountNumber', new FormControl(''));
