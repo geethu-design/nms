@@ -9,6 +9,8 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+import { AuthService } from '../../shared/services/authentication/auth.service';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-teams',
   imports: [
@@ -16,6 +18,7 @@ import { AddEmployeeComponent } from '../add-employee/add-employee.component';
     CommonModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    MatButtonModule
   ],
   templateUrl: './teams.component.html',
   standalone:true,
@@ -26,7 +29,8 @@ export class TeamsComponent implements OnInit{
   pageSize=10;
   pageSizeOptions:number[]=[5,10,25,100];
   searchControl = new FormControl('');
-  displayedColumns: string[] = ['employeeName','workEmail', 'employeeCode', 'workMobileNumber', 'department'];
+  displayedColumns: string[]=[]; 
+  currentRole = '';
 
    teamList:any;
    payload:Teamlisting.UserDataPayload ={
@@ -48,12 +52,23 @@ export class TeamsComponent implements OnInit{
   }
      constructor(
       private teamsService:TeamsService,
+      public authService:AuthService,
       private router:Router,
       private dialog:MatDialog,
      ){}
   ngOnInit(): void {
     this.getTeamListing();
     this.getFilteredData();
+    this.authService.getRole().subscribe(role => {
+      this.currentRole = role;
+      this.displayedColumns =  ['employeeName','workEmail', 'employeeCode', 'workMobileNumber'];
+      if (role === 'admin') {
+        this.displayedColumns.push('department');
+      }
+      this.displayedColumns.push('edit');
+    });
+  
+  
   }
   getTeamListing(searchTerm:string=''){
     this.teamsService.getTeamList(this.payload,searchTerm).subscribe((res:Teamlisting.teamResponse)=>{
@@ -104,10 +119,23 @@ export class TeamsComponent implements OnInit{
     {  panelClass: 'force-wide-dialog',
       maxWidth: 'none',
       autoFocus: true,
-      restoreFocus: true,
-    
+      restoreFocus: true,    
     }
 
   )
+ }
+ editEmployee(employee:any){
+   const dialogRef = this.dialog.open(AddEmployeeComponent,{
+    panelClass:'force-wide-dialog',
+    maxWidth:'none',
+    autoFocus:true,
+    restoreFocus:true,
+    data:{ employee }
+   });
+   dialogRef.afterClosed().subscribe(result=>{
+    if(result === 'updated'){
+      this.getTeamListing(this.searchControl.value || '')
+    }
+   });
  }
 }
