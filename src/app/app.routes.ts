@@ -10,6 +10,8 @@ import { StepOneComponent } from './pages/step-one/step-one.component';
 import { StepTwoComponent } from './pages/step-two/step-two.component';
 import { StepThreeComponent } from './pages/step-three/step-three.component';
 import { FileUploadComponent } from './pages/file-upload/file-upload.component';
+import { PunchBoardComponent } from './pages/punch-board/punch-board.component';
+import { PunchboardStatusComponent } from './pages/punchboard-status/punchboard-status.component';
 export const routes: Routes = [
     {
         path:'login',
@@ -31,7 +33,20 @@ export const routes: Routes = [
         {
             path:'teams',
             component:TeamsComponent
-        },        
+        },  
+        {
+            path:'punchboard',
+            component:PunchBoardComponent,
+            children: [
+                {
+                  path: 'punch-status',
+                  component: PunchboardStatusComponent
+                },
+                
+              ]
+        
+        },
+              
     ]
 },
 {
@@ -54,6 +69,7 @@ export const routes: Routes = [
     path:'file-upload',
     component:FileUploadComponent
 },
+
 {
     path:'',
     redirectTo:'/organisation-login',
