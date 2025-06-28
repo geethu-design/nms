@@ -12,6 +12,7 @@ export const authHeaderInterceptor: HttpInterceptorFn = (
   // Inject the CookieService
   const organizationId = 'nintriva'; 
   const accessToken= cookieService.get('access_token');
+  const refreshToken = cookieService.get('refresh_token');
   // Set the organization ID in the cookie
   cookieService.set('organizationId', organizationId, { 
     path: '/',
@@ -35,13 +36,27 @@ else{
   if(accessToken){
     const clonedRequest = req.clone({
       setHeaders:{
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken }`,
         'org-id': organizationId,
         'unit-id':'default'   
       }
     });
     return next(clonedRequest);  // Return the modified request with the Authorization header
 
+  }
+  else {
+    if(refreshToken){
+      const clonedRequest =req.clone({
+        setHeaders:{
+          Authorization: `Bearer ${refreshToken}`,
+          'org-id': organizationId,
+          'unit-id':'default'   
+  
+        }
+      });
+      return next(clonedRequest);  // Return the modified request with the Authorization header
+
+    }
   }
 }
 return next(req)
