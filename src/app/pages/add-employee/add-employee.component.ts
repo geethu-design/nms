@@ -1,4 +1,4 @@
-import { Component, inject, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,6 +8,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { StepOneComponent } from '../step-one/step-one.component';
 import { StepTwoComponent } from '../step-two/step-two.component';
 import { StepThreeComponent } from '../step-three/step-three.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-add-employee',
   imports: [
@@ -27,7 +29,7 @@ import { StepThreeComponent } from '../step-three/step-three.component';
   standalone:true,
   encapsulation: ViewEncapsulation.None 
 })
-export class AddEmployeeComponent {
+export class AddEmployeeComponent implements OnInit {
  step1Form!:FormGroup;
  step2Form!:FormGroup;
 //  step3Form!:FormGroup;
@@ -35,12 +37,28 @@ export class AddEmployeeComponent {
  @Input() step2Data!: any;
 //  step2Data
 //   = this.step2FormGroup.value;
+employeeForm!: FormGroup;
+isEditMode: boolean = false;
 
- constructor(private fb: FormBuilder) {
+
+ constructor(
+       private fb: FormBuilder,
+       @Inject(MAT_DIALOG_DATA) public data: any
+) {
+  console.log('Received employee data:', data?.employee);  
+
   this.step1Form = this.fb.group({});
   this.step2Form = this.fb.group({});
   // this.step3Form = this.fb.group({});
  }
+  ngOnInit(): void {
+    this.initializeForms();
+
+    if (this.data?.employee) {
+      this.isEditMode = true;
+      this.populateForms(this.data.employee);
+    }
+  }
 onSubmit(){
   // if(this.step1Form.valid && this.step2Form.valid && this.step3Form.valid){
     if(this.step1Form.valid && this.step2Form.valid ){
@@ -63,4 +81,34 @@ onSubmit(){
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
+
+  initializeForms() {
+    this.step1Form = this.fb.group({
+      firstname: [''],
+      lastname: ['']
+    });
+  
+    this.step2Form = this.fb.group({
+      workEmail: [''],
+      employeeCode: [''],
+      workMobileNumber: [''],
+      department: ['']
+    });
+  }
+  
+  populateForms(employee: any) {
+    this.step1Form.patchValue({
+      firstname: employee.firstname || '',
+      lastname: employee.lastname || '',
+      
+    });
+  
+    this.step2Form.patchValue({
+      workEmail: employee.workEmail || '',
+      employeeCode: employee.employeeCode || '',
+      workMobileNumber: employee.workMobileNumber || '',
+      department: employee.department?.departmentName || ''
+    });
+    }
+
 }

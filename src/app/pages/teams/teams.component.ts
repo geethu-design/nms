@@ -124,18 +124,20 @@ export class TeamsComponent implements OnInit{
 
   )
  }
- editEmployee(employee:any){
-   const dialogRef = this.dialog.open(AddEmployeeComponent,{
-    panelClass:'force-wide-dialog',
-    maxWidth:'none',
-    autoFocus:true,
-    restoreFocus:true,
-    data:{ employee }
-   });
-   dialogRef.afterClosed().subscribe(result=>{
-    if(result === 'updated'){
-      this.getTeamListing(this.searchControl.value || '')
+ editEmployee(employee: any) {
+  const dialogRef = this.dialog.open(AddEmployeeComponent, {
+    panelClass: 'force-wide-dialog',
+    maxWidth: 'none',
+    autoFocus: true,
+    restoreFocus: true,
+    data: { employee }  
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === 'updated') {
+      this.getTeamListing(this.searchControl.value || '');
     }
-   });
- }
+  });
+}
+
 }
