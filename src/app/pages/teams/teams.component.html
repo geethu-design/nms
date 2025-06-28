@@ -31,9 +31,15 @@
     </ng-container>
   
     
-    <ng-container matColumnDef="department">
+    <ng-container *ngIf="currentRole === 'admin'" matColumnDef="department">
       <th mat-header-cell *matHeaderCellDef> Department </th>
       <td mat-cell *matCellDef="let element"> {{element.department.departmentName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+       <th mat-header-cell *matHeaderCellDef>Actions</th>
+       <td *matCellDef="let element">
+        <button mat-button color="primary" (click)="editEmployee(element)">Edit</button>
+       </td>
     </ng-container>
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
