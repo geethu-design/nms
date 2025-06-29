@@ -12,6 +12,8 @@ import { StepThreeComponent } from './pages/step-three/step-three.component';
 import { FileUploadComponent } from './pages/file-upload/file-upload.component';
 import { PunchBoardComponent } from './pages/punch-board/punch-board.component';
 import { PunchboardStatusComponent } from './pages/punchboard-status/punchboard-status.component';
+import { PunchboardHistoryComponent } from './pages/punchboard-history/punchboard-history.component';
+import { ApprovalsComponent } from './pages/approvals/approvals.component';
 export const routes: Routes = [
     {
         path:'login',
@@ -39,9 +41,22 @@ export const routes: Routes = [
             component:PunchBoardComponent,
             children: [
                 {
+                  path:'',
+                  redirectTo:'punch-status',
+                  pathMatch:'full'
+                },
+                {
                   path: 'punch-status',
                   component: PunchboardStatusComponent
                 },
+                {
+                    path: 'punch-history',
+                    component:PunchboardHistoryComponent
+                },
+                {
+                    path:'approvals',
+                    component:ApprovalsComponent
+                }
                 
               ]
         
