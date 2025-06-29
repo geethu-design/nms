@@ -8,7 +8,7 @@
         
             <div class="username">
                 <h6>{{userDetails?.data?.personalDetails?.firstname}}</h6>
-                <h6>{{userDetails?.data?.employeeCode}}</h6>
+                <h6>{{currentRole === 'admin'? 'Admin': userDetails?.data?.employeeCode}}</h6>
             </div>
            </div>
     </mat-toolbar>

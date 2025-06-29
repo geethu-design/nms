@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { NavbarService } from './navbar.service';
 import {Subscription } from 'rxjs';
 import { HeadingService } from '../services/heading/heading.service';
-
+import { AuthService } from '../services/authentication/auth.service';
 @Component({
   selector: 'app-navbar',
   imports: [MatSidenavModule,
@@ -20,10 +20,12 @@ import { HeadingService } from '../services/heading/heading.service';
 export class NavbarComponent {
   userDetails: any;
   currentHeading:string = ''; //strore current heading//
+  currentRole:string='';
   private headingSubscription!:Subscription;
   constructor(private service:NavbarService,
     private cookieservice:CookieService,
     private headingService:HeadingService,
+    private authService:AuthService,
     ){}
 
   ngOnInit(): void {
@@ -31,6 +33,11 @@ export class NavbarComponent {
     this.headingSubscription = this.headingService.currentHeading$.subscribe(heading=>{
         this.currentHeading = heading; //update heading on navbar when it changes//
     });
+
+    //call authservice to change the role
+    this.authService.getRole().subscribe(role=>{
+    this.currentRole = role;
+    })
   }
  ngOnDestroy():void{
     if(this.headingSubscription){
@@ -44,5 +51,6 @@ export class NavbarComponent {
     })
 
   }
+
 
 }
