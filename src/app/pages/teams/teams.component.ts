@@ -64,11 +64,9 @@ export class TeamsComponent implements OnInit{
       this.displayedColumns =  ['employeeName','workEmail', 'employeeCode', 'workMobileNumber'];
       if (role === 'admin') {
         this.displayedColumns.push('department');
+        this.displayedColumns.push('edit');
       }
-      this.displayedColumns.push('edit');
     });
-  
-  
   }
   getTeamListing(searchTerm:string=''){
     this.teamsService.getTeamList(this.payload,searchTerm).subscribe((res:Teamlisting.teamResponse)=>{
