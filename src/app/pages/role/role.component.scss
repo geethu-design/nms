@@ -1,0 +1,18 @@
+.role_switcher {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  button.active-role {
+    background-color: #1976d2; 
+    color: white;
+    border-color: #1976d2;
+  }
+  
